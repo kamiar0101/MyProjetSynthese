@@ -1,0 +1,314 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#F9FFFC">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F9FFFC">
+
+        <LinearLayout
+            android:id="@+id/ll1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="30dp"
+            android:background="@drawable/bottom_rounded_background"
+            android:layoutDirection="rtl"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <!-- Titre -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="نسبة الدهون في الجسم"
+
+                android:textColor="#00695C"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="4dp" />
+
+            <!-- Description -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="احسب نسبة الدهون في جسمك باستخدام طريقة البحرية الأمريكية."
+                android:textSize="14sp"
+                android:textColor="#808080"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- الجنس -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="الجنس"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <RadioGroup
+                android:id="@+id/rgGender_fragment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rbMale_fragment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ذكر"
+                    android:checked="true" />
+
+                <RadioButton
+                    android:id="@+id/rbFemale_fragment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="أنثى"
+                    android:layout_marginStart="16dp" />
+            </RadioGroup>
+
+            <!-- Âge -->
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="العمر"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginTop="16dp" />
+
+            <EditText
+                android:id="@+id/etAge_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="e.g., 30"
+                android:inputType="number"
+                android:background="@drawable/input_background"
+                android:padding="12dp" />
+
+            <!-- Poids -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="الوزن (كجم)"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginTop="16dp" />
+
+            <EditText
+                android:id="@+id/etPoids_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="e.g., 70"
+                android:inputType="numberDecimal"
+                android:background="@drawable/input_background"
+                android:padding="12dp" />
+
+            <!-- Taille -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="الطول (سم)"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginTop="16dp" />
+
+            <EditText
+                android:id="@+id/etTaille_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="e.g., 175"
+                android:inputType="numberDecimal"
+                android:background="@drawable/input_background"
+                android:padding="12dp" />
+
+            <!-- Tour du cou -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="محیط الرقبة (سم)"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginTop="16dp" />
+
+            <EditText
+                android:id="@+id/etCou_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="e.g., 36"
+                android:inputType="numberDecimal"
+                android:background="@drawable/input_background"
+                android:padding="12dp" />
+
+            <!-- Tour de taille -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="محیط الخصر (سم)"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginTop="16dp" />
+
+            <EditText
+                android:id="@+id/etTailleCeinture_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="e.g., 80"
+                android:inputType="numberDecimal"
+                android:background="@drawable/input_background"
+                android:padding="12dp" />
+            <!-- Tour des hanches (للنساء فقط) -->
+            <TextView
+                android:id="@+id/tvHanche_fragment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:text="محیط الورك (سم)"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginTop="16dp" />
+
+            <EditText
+                android:id="@+id/etHanche_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:visibility="gone"
+                android:hint="e.g., 95"
+                android:inputType="numberDecimal"
+                android:background="@drawable/input_background"
+                android:padding="12dp" />
+
+            <!-- Bouton -->
+            <Button
+                android:id="@+id/btnCalculerGraisse_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="حساب نسبة الدهون"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#009688"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginTop="24dp"
+                android:padding="12dp" />
+
+        </LinearLayout>
+
+        <!---->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:padding="30dp"
+            android:background="@drawable/top_bottom_rounded_background"
+            android:layoutDirection="rtl"
+            app:layout_constraintTop_toBottomOf="@+id/ll1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <!-- Titre -->
+            <TextView
+                android:id="@+id/titleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="% نسبة الدهون في جسمك"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+
+            <!-- Pourcentage -->
+            <TextView
+                android:id="@+id/percentageText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="%"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                app:layout_constraintTop_toBottomOf="@id/titleText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="12dp"/>
+
+            <!-- Type de graisse -->
+            <TextView
+                android:id="@+id/typeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:layout_gravity="center_horizontal"
+                android:textSize="20sp"
+                android:textColor="@color/blue"
+                app:layout_constraintTop_toBottomOf="@id/percentageText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="4dp"/>
+
+            <!-- Barre de progression -->
+            <ProgressBar
+                android:id="@+id/pv_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:progress="0"
+                android:max="40"
+                android:progressDrawable="@drawable/progress_bar"
+                app:layout_constraintTop_toBottomOf="@id/typeText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="12dp" />
+
+            <!---->
+            <!-- Échelle de la barre -->
+            <LinearLayout
+                android:id="@+id/scaleLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@id/pv_fragment"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="4dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="0%" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="textEnd"
+                    android:text="+40%" />
+            </LinearLayout>
+            <!-- Description -->
+            <TextView
+                android:id="@+id/descriptionText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/info_background"
+                android:text="نسبة الدهون في الجسم هي إجمالي كتلة الدهون مقسومة على إجمالي كتلة الجسم. تُستخدم طريقة البحرية الأمريكية لهذا الحساب."
+                android:textSize="14sp"
+                android:padding="12dp"
+                app:layout_constraintTop_toBottomOf="@id/scaleLayout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="12dp" />
+
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

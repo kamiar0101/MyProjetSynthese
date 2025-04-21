@@ -1,0 +1,240 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#F9FFFC">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F9FFFC">
+
+        <LinearLayout
+            android:id="@+id/ll1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="30dp"
+            android:background="@drawable/bottom_rounded_background"
+            android:layoutDirection="rtl"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <!-- Titre -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="مؤشر كتلة الجسم (BMI)"
+
+                android:textColor="#00695C"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="4dp" />
+
+            <!-- Description -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="احسب مؤشر كتلة الجسم لتحديد ما إذا كان وزنك صحيًا بالنسبة لطولك."
+                android:textSize="14sp"
+                android:textColor="#808080"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_marginBottom="16dp"/>
+
+
+
+            <!-- Longueur -->
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="الطول (سم)"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginTop="16dp" />
+
+            <EditText
+                android:id="@+id/etTaille_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="175"
+                android:inputType="number"
+                android:background="@drawable/input_background"
+                android:padding="12dp" />
+
+            <!-- Poids -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="الوزن (كجم)"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginTop="16dp" />
+
+            <EditText
+                android:id="@+id/etPoids_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="70"
+                android:inputType="numberDecimal"
+                android:background="@drawable/input_background"
+                android:padding="12dp" />
+
+            <!-- Bouton -->
+            <Button
+                android:id="@+id/btnCalculerGraisseNasseCorporelle_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="حساب مؤشر كتلة الجسم"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#009688"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginTop="24dp"
+                android:padding="12dp" />
+
+        </LinearLayout>
+
+        <!---->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:padding="30dp"
+            android:background="@drawable/top_bottom_rounded_background"
+            android:layoutDirection="rtl"
+            app:layout_constraintTop_toBottomOf="@+id/ll1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <!-- Titre -->
+                <TextView
+                    android:id="@+id/titleText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="النتيجة"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="10dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/image_bmi"/>
+
+            </LinearLayout>
+
+            <!-- Pourcentage -->
+            <TextView
+                android:id="@+id/tvGraisseNasseCorporelle_fragment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="%"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                app:layout_constraintTop_toBottomOf="@id/titleText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="12dp"/>
+
+            <!-- Type de graisse -->
+            <TextView
+                android:id="@+id/tvPointNormal_fragment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" "
+                android:layout_gravity="center_horizontal"
+                android:textSize="20sp"
+                android:textColor="@color/blue"
+                app:layout_constraintTop_toBottomOf="@id/percentageText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="4dp"/>
+
+            <!-- Barre de progression -->
+            <ProgressBar
+                android:id="@+id/pv_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:progress="0"
+                android:max="40"
+                android:progressTint="@color/blue"
+                android:progressDrawable="@drawable/progress_bar"
+                app:layout_constraintTop_toBottomOf="@id/typeText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="12dp" />
+
+            <!---->
+            <!-- Échelle de la barre -->
+            <LinearLayout
+                android:id="@+id/scaleLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@id/pv_fragment"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="4dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="0%" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="textEnd"
+                    android:text="+40%" />
+            </LinearLayout>
+
+            <!-- Description -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/info_background"
+                android:padding="12dp"
+                app:layout_constraintTop_toBottomOf="@id/scaleLayout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="12dp">
+                <TextView
+                    android:id="@+id/descriptionText"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:text="مؤشر كتلة الجسم هو حساب بسيط يستخدم طول الشخص ووزنه. الصيغة هي BMI = كجم/م² حيث كجم هو الوزن بالكيلوغرام و م² هو الطول بالمتر المربع."
+                    android:textSize="14sp"
+                     />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/image_info"
+                    android:layout_marginStart="10dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
