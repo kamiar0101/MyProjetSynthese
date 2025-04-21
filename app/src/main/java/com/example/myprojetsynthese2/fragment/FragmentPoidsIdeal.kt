@@ -15,6 +15,8 @@ import com.example.myprojetsynthese2.R
 
 class FragmentPoidsIdeal : Fragment() {
 
+
+    // Class Attributs
     private lateinit var genderGroup: RadioGroup
     private lateinit var maleRadioButton: RadioButton
     private lateinit var femaleRadioButton: RadioButton
