@@ -15,6 +15,7 @@ import com.example.myprojetsynthese2.fragment.FragmentSommeilSain
 
 class MainActivity : AppCompatActivity() {
 
+    // recuperer les id des boutton
     val btnSommeil: Button by lazy { findViewById(R.id.btnSommeil) }
     val btnPoucentageMatieresGrasses: Button by lazy { findViewById(R.id.btnPoucentageMatieresGrasses) }
     val PoidsIdeal: Button by lazy { findViewById(R.id.btnPoidsIdeal) }
