@@ -62,7 +62,7 @@ class FragmentIndiceDeMasseCorporelle : Fragment() {
                 }
 
                 val bmi = poids / (longueur * longueur)
-                tvGraisseNasseCorporelle_fragment.text = bmi.toString()
+                tvGraisseNasseCorporelle_fragment.text = "% " + String.format("%.2f", bmi)
 
                 //
                 pv_fragment.progress = bmi.toInt()

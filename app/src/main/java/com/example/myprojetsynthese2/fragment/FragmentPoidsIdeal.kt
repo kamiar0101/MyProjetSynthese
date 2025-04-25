@@ -12,7 +12,6 @@ import android.widget.RadioGroup
 import android.widget.TextView
 import com.example.myprojetsynthese2.R
 
-
 class FragmentPoidsIdeal : Fragment() {
 
     private lateinit var genderGroup: RadioGroup

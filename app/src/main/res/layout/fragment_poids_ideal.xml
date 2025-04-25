@@ -96,7 +96,7 @@
                 android:id="@+id/btnCalculerGraisse_fragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="حساب نسبة الدهون"
+                android:text="حساب الوزن المثالي"
                 android:textColor="#FFFFFF"
                 android:backgroundTint="#009688"
                 android:textStyle="bold"

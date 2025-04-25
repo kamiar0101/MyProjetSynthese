@@ -10,21 +10,54 @@
     android:layoutDirection="rtl">
 
     <!---->
+
+    <!---->
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/ivLangue"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_margin="20dp"
-            android:src="@drawable/img" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layoutDirection="ltr"
+            >
+
+            <ImageView
+                android:id="@+id/ivDark"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/night_mode"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ivLangue"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="20dp"
+                android:src="@drawable/world"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/ivDark"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ivHistory"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="6dp"
+                android:src="@drawable/history"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         <TextView
             android:id="@+id/textView"
@@ -45,7 +78,6 @@
             android:textSize="18dp" />
     </LinearLayout>
 
-    <!---->
     <ScrollView
         android:id="@+id/svBottonChoix"
         android:layout_width="wrap_content"
@@ -66,6 +98,7 @@
                 android:id="@+id/btnSommeil"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_marginTop="6dp"
                 android:layout_weight="1"
                 android:text="النوم"
                 android:backgroundTint="#136D64"/>
