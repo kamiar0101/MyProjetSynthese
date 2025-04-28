@@ -2,8 +2,10 @@ package com.example.myprojetsynthese2
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.FrameLayout
+import android.widget.Spinner
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -21,6 +23,10 @@ class MainActivity : AppCompatActivity() {
     val PoidsIdeal: Button by lazy { findViewById(R.id.btnPoidsIdeal) }
     val btnPointCorporelle: Button by lazy { findViewById(R.id.btnPointCorporelle) }
     val fragment: FrameLayout by lazy { findViewById(R.id.fl) }
+    val sLangue: Spinner by lazy { findViewById(R.id.sLangue) }
+    // liste des langues
+    val listOfLanguage = listOf<String>("العربية", "English")
+
 
     @SuppressLint("CommitTransaction")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,6 +38,9 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        // remplire Spinner
+        val adapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, listOfLanguage)
+        sLangue.adapter = adapter
 
         // btnSommeil
         btnSommeil.setOnClickListener {

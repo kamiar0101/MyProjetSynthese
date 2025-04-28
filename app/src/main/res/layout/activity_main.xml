@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:paddingHorizontal="10dp"
     android:background="#e6f7f5"
-    android:layoutDirection="rtl">
+    >
 
     <!---->
 
@@ -24,27 +24,24 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layoutDirection="ltr"
-            >
+            android:layout_height="wrap_content">
 
-            <ImageView
+            <!--<ImageView
                 android:id="@+id/ivDark"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:src="@drawable/night_mode"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent" />-->
 
             <ImageView
                 android:id="@+id/ivLangue"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_margin="20dp"
+                android:layout_margin="16dp"
                 android:src="@drawable/world"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/ivDark"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
@@ -56,6 +53,14 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <Spinner
+                android:id="@+id/sLangue"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/ivLangue"
+                app:layout_constraintEnd_toStartOf="@+id/ivLangue"
+                app:layout_constraintTop_toTopOf="@+id/ivLangue" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
