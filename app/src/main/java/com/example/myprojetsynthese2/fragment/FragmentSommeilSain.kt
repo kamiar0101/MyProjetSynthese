@@ -1,18 +1,22 @@
 package com.example.myprojetsynthese2.fragment
 
 import android.annotation.SuppressLint
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
+import androidx.transition.Visibility
 import com.example.myprojetsynthese2.R
 import java.text.SimpleDateFormat
 import java.util.*
 
 class FragmentSommeilSain : Fragment() {
 
+    private lateinit var clSommeil_2_fragment: ConstraintLayout
     private lateinit var champAge: EditText
     private lateinit var timePickerReveil: TimePicker
     private lateinit var boutonCalculer: Button
@@ -29,14 +33,15 @@ class FragmentSommeilSain : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        clSommeil_2_fragment = view.findViewById(R.id.clSommeil_2_fragment)
         champAge = view.findViewById(R.id.etAgeSommeil_fragment)
         timePickerReveil = view.findViewById(R.id.tPSommeil_fragment)
         boutonCalculer = view.findViewById(R.id.btnCalculateSommeil_fragment)
         texteDureeSommeil = view.findViewById(R.id.tvDureeSommeilRecommende_Fragment)
         texteHeureCoucher = view.findViewById(R.id.tvHeureCoucherConsecutive_Fragment)
-
         timePickerReveil.setIs24HourView(true)
 
+        //
         cyclesTextes = listOf(
             view.findViewById(R.id.tvCoucher1_fragment),
             view.findViewById(R.id.tvCoucher2_fragment),
@@ -82,6 +87,9 @@ class FragmentSommeilSain : Fragment() {
             //Toast.makeText(requireContext(), getString(R.string.toast_heure_coucher, heureCoucher), Toast.LENGTH_LONG).show()
 
             calculerCyclesSommeil(heureReveil, minuteReveil)
+
+            //
+            clSommeil_2_fragment.visibility = view.visibility
         }
     }
 

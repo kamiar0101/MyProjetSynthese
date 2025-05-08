@@ -200,8 +200,10 @@
 
         <!-- Section 2 -->
         <LinearLayout
+            android:id="@+id/lyPourcentage_2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:orientation="vertical"
             android:layout_marginTop="20dp"
             android:padding="30dp"

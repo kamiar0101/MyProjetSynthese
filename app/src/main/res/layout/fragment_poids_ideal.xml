@@ -107,8 +107,10 @@
 
         <!---->
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clPoids_2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:background="@drawable/bg_card"
             android:padding="30dp"
             app:layout_constraintEnd_toEndOf="parent"

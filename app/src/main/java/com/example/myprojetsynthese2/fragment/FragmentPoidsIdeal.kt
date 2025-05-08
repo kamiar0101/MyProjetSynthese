@@ -11,6 +11,7 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.myprojetsynthese2.R
 
 class FragmentPoidsIdeal : Fragment() {
@@ -21,6 +22,7 @@ class FragmentPoidsIdeal : Fragment() {
     private lateinit var heightEditText: EditText
     private lateinit var calculateButton: Button
 
+    private lateinit var clPoids_2: ConstraintLayout
     private lateinit var percentageText: TextView
     private lateinit var tvDevine: TextView
     private lateinit var tvRobinsone: TextView
@@ -46,6 +48,7 @@ class FragmentPoidsIdeal : Fragment() {
         heightEditText = view.findViewById(R.id.etAge_fragment)
         calculateButton = view.findViewById(R.id.btnCalculerGraisse_fragment)
 
+        clPoids_2 = view.findViewById(R.id.clPoids_2)
         percentageText = view.findViewById(R.id.percentageText)
         tvDevine = view.findViewById(R.id.tvDevine)
         tvRobinsone = view.findViewById(R.id.tvRobinsone)
@@ -77,11 +80,16 @@ class FragmentPoidsIdeal : Fragment() {
             tvRobinsone.text = String.format("%.1f كغ", robinson)
             tvMiller.text = String.format("%.1f كغ", miller)
             tvHamwi.text = String.format("%.1f كغ", hamwi)
+
+            //
+            clPoids_2.visibility = view.visibility
         }
 
+        // gerre le clique  sur le button calculateButton
         calculateButton.setOnClickListener {
             calculerPoidsIdeal()
         }
+
     }
 
 }

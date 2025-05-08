@@ -23,6 +23,7 @@ class FragmentPoucentageDeMatieresGrasseas : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // Récupération des vues
+        val lyPourcentage_2 = view.findViewById<LinearLayout>(R.id.lyPourcentage_2)
         val etAge_fragment = view.findViewById<EditText>(R.id.etAge_fragment)
         val etTaille_fragment = view.findViewById<EditText>(R.id.etTaille_fragment)
         val etPoids_fragment = view.findViewById<EditText>(R.id.etPoids_fragment)
@@ -125,6 +126,9 @@ class FragmentPoucentageDeMatieresGrasseas : Fragment() {
             } catch (e: Exception) {
                 //Toast.makeText(requireContext(), getString(R.string.error_fill_fields), Toast.LENGTH_SHORT).show()
             }
+            
+            // 
+            lyPourcentage_2.visibility = view.visibility
         }
 
     }

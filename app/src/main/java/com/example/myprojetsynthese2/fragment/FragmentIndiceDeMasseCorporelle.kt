@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
@@ -24,7 +25,7 @@ class FragmentIndiceDeMasseCorporelle : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        val lyIndice_2: LinearLayout by lazy { view.findViewById(R.id.lyIndice_2) }
         val etTaille_fragment: EditText by lazy { view.findViewById(R.id.etTaille_fragment) }
         val etPoids_fragment: EditText by lazy { view.findViewById(R.id.etPoids_fragment) }
         val btnCalculerGraisseNasseCorporelle_fragment: Button by lazy { view.findViewById(R.id.btnCalculerGraisseNasseCorporelle_fragment) }
@@ -83,6 +84,8 @@ class FragmentIndiceDeMasseCorporelle : Fragment() {
                 //Toast.makeText(requireContext(), "إدخال غير صالح", Toast.LENGTH_SHORT).show()
             }
 
+            //
+            lyIndice_2.visibility = view.visibility
         }
     }
 
