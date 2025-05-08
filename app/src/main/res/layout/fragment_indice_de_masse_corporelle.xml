@@ -17,7 +17,6 @@
             android:orientation="vertical"
             android:padding="30dp"
             android:background="@drawable/bottom_rounded_background"
-            android:layoutDirection="rtl"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
@@ -26,7 +25,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="مؤشر كتلة الجسم (BMI)"
+                android:text="@string/bmi_title"
                 android:textColor="#00695C"
                 android:textSize="30sp"
                 android:textStyle="bold"
@@ -36,7 +35,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="احسب مؤشر كتلة الجسم لتحديد ما إذا كان وزنك صحيًا بالنسبة لطولك."
+                android:text="@string/bmi_description"
                 android:textSize="14sp"
                 android:textColor="#808080"
                 android:gravity="center"
@@ -48,7 +47,7 @@
             <!-- Longueur -->
             <TextView android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="الطول (سم)"
+                android:text="@string/height_label"
                 android:textStyle="bold"
                 android:textSize="16sp"
                 android:layout_marginTop="16dp" />
@@ -66,7 +65,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="الوزن (كجم)"
+                android:text="@string/weight_label"
                 android:textStyle="bold"
                 android:textSize="16sp"
                 android:layout_marginTop="16dp" />
@@ -85,7 +84,7 @@
                 android:id="@+id/btnCalculerGraisseNasseCorporelle_fragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="حساب مؤشر كتلة الجسم"
+                android:text="@string/calculate_bmi_button"
                 android:textColor="#FFFFFF"
                 android:backgroundTint="#009688"
                 android:textStyle="bold"
@@ -102,8 +101,7 @@
             android:orientation="vertical"
             android:layout_marginTop="20dp"
             android:padding="30dp"
-            android:background="@drawable/top_bottom_rounded_background"
-            android:layoutDirection="rtl"
+            android:background="@drawable/bg_card"
             app:layout_constraintTop_toBottomOf="@+id/ll1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
@@ -121,7 +119,7 @@
                     android:id="@+id/titleText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="النتيجة"
+                    android:text="@string/result_title"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:textAlignment="center"
@@ -145,7 +143,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="12dp"
-                android:text="%"
+                android:text="@string/percentage"
                 android:textSize="32sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -157,7 +155,7 @@
                 android:id="@+id/tvPointNormal_fragment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=" "
+                android:text=""
                 android:layout_gravity="center_horizontal"
                 android:textSize="20sp"
                 android:textColor="@color/blue"
@@ -218,18 +216,20 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="12dp">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="6dp"
+                    android:src="@drawable/image_info"/>
+
                 <TextView
                     android:id="@+id/descriptionText"
-                    android:layout_width="250dp"
+                    android:layout_width="300dp"
                     android:layout_height="wrap_content"
-                    android:text="مؤشر كتلة الجسم هو حساب بسيط يستخدم طول الشخص ووزنه. الصيغة هي BMI = كجم/م² حيث كجم هو الوزن بالكيلوغرام و م² هو الطول بالمتر المربع."
+                    android:text="@string/bmi_description_info"
                     android:textSize="14sp"
-                     />
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/image_info"
-                    android:layout_marginStart="10dp"/>
+                    />
             </LinearLayout>
 
         </LinearLayout>

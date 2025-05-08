@@ -7,9 +7,7 @@
     android:layout_height="match_parent"
     android:paddingHorizontal="10dp"
     android:background="#e6f7f5"
-    >
-
-    <!---->
+    android:layoutDirection="locale">
 
     <!---->
     <LinearLayout
@@ -56,7 +54,7 @@
 
             <Spinner
                 android:id="@+id/sLangue"
-                android:layout_width="100dp"
+                android:layout_width="115dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="@+id/ivLangue"
                 app:layout_constraintEnd_toStartOf="@+id/ivLangue"
@@ -69,7 +67,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:text="حاسبة المؤشرات الصحية"
+            android:text="@string/titre_name"
             android:textColor="#0a7c71"
             android:textSize="35dp"
             android:textStyle="bold" />
@@ -79,7 +77,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:text="احسب وتتبع مؤشراتك الصحية الرئيسية"
+            android:text="@string/slogan"
             android:textSize="18dp" />
     </LinearLayout>
 
@@ -106,7 +104,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:backgroundTint="#136D64"
-                android:text="النوم" />
+                android:text="@string/sommeil" />
 
             <Button
                 android:id="@+id/btnPoucentageMatieresGrasses"
@@ -114,7 +112,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:backgroundTint="#136D64"
-                android:text="نسبة الدهون" />
+                android:text="@string/pourcentage_de_matieres_grasses" />
 
             <Button
                 android:id="@+id/btnPoidsIdeal"
@@ -122,7 +120,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:backgroundTint="#136D64"
-                android:text="الوزن المثالي" />
+                android:text="@string/poids_ideal" />
 
             <Button
                 android:id="@+id/btnPointCorporelle"
@@ -130,7 +128,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:backgroundTint="#136D64"
-                android:text="كتلة الجسم" />
+                android:text="@string/indice_de_masse_corporelle" />
         </LinearLayout>
     </ScrollView>
 

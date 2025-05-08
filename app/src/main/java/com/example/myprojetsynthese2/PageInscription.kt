@@ -1,8 +1,6 @@
 package com.example.myprojetsynthese2
 
-import android.annotation.SuppressLint
 import android.content.Intent
-import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.os.Bundle
 import android.view.View
@@ -11,29 +9,28 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
 import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import java.util.Locale
 
-class PageLogin : AppCompatActivity() {
+class PageInscription : AppCompatActivity() {
+
     // Déclaration des vues paresseuse
     lateinit var sLangue: Spinner
-    lateinit var btnLogin: Button
-    lateinit var tvSignUp: TextView
+    lateinit var btnCreateAccount: Button
+    lateinit var tvLogin: TextView
+
 
     // Liste des langues
     val listOfLanguage = listOf<String>("العربية", "English")
 
-
-    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_page_login)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main1)) { v, insets ->
+        setContentView(R.layout.activity_page_inscription)
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main2)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
@@ -41,8 +38,8 @@ class PageLogin : AppCompatActivity() {
 
         // Initialisation des vues après setContentView
         sLangue = findViewById(R.id.sLangue)
-        btnLogin = findViewById(R.id.btnLogin)
-        tvSignUp = findViewById(R.id.tvSignUp)
+        btnCreateAccount = findViewById(R.id.btnCreateAccount)
+        tvLogin = findViewById(R.id.tvLogin)
 
         // Spinner des langues
         val adapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, listOfLanguage)
@@ -61,28 +58,26 @@ class PageLogin : AppCompatActivity() {
                 }
             }
 
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                // ne rien faire
-            }
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
         })
 
-        // Aller a l'activite principale MainActivity
-        btnLogin.setOnClickListener {
-            //val selectedLangCode = if (sLangue.selectedItemPosition == 0) "ar" else "en"
-            val intet = Intent(this, MainActivity::class.java)
-            startActivity(intet)
+        // Aller a l'activite principale MainActivity et y ajouter la langue choisie
+        btnCreateAccount.setOnClickListener {
+            val selectedLangCode = if (sLangue.selectedItemPosition == 0) "ar" else "en"
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("langue", selectedLangCode)  // Passer la langue avec l'Intent
+            startActivity(intent)
 
             finish()
         }
 
-        // Aller a l'activite PageInscription
-        tvSignUp.setOnClickListener{
-            val intent = Intent(this, PageInscription::class.java)
+        // Aller a l'activite PageLogin
+        tvLogin.setOnClickListener{
+            val intent = Intent(this, PageLogin::class.java)
             startActivity(intent)
             //
             finish()
         }
-
     }
 
 
@@ -94,9 +89,8 @@ class PageLogin : AppCompatActivity() {
         val config = Configuration()
         config.setLocale(locale)
         config.setLayoutDirection(locale)
-        baseContext.resources.updateConfiguration(config, baseContext.resources.displayMetrics)
 
-        // Redémarre l'activité pour appliquer le changement
-        recreate()
+        baseContext.resources.updateConfiguration(config, baseContext.resources.displayMetrics)
+        recreate() // Redémarre l'activité pour appliquer le changement
     }
 }

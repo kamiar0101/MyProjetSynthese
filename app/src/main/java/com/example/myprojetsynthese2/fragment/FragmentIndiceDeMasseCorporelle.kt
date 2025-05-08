@@ -36,12 +36,13 @@ class FragmentIndiceDeMasseCorporelle : Fragment() {
 
 
         btnCalculerGraisseNasseCorporelle_fragment.setOnClickListener {
+            // Vérifier si les les champs sont vide
             if (etTaille_fragment.text.isEmpty() || etTaille_fragment.text.isBlank()){
-                etTaille_fragment.error = "الرجاء إدخال القيم"
+                etTaille_fragment.error = getString(R.string.erreur_taille_requise)
                 return@setOnClickListener
             }
             if (etPoids_fragment.text.isEmpty() || etPoids_fragment.text.isBlank() ) {
-                etPoids_fragment.error = "الرجاء إدخال القيم"
+                etPoids_fragment.error = getString(R.string.error_enter_weight)
                 return@setOnClickListener
             }
 
@@ -53,11 +54,11 @@ class FragmentIndiceDeMasseCorporelle : Fragment() {
                 val poids = poidsStr.toDouble()
 
                 if (longueur <= 0 ) {
-                    etTaille_fragment.error = "القيم غير صالحة"
+                    etTaille_fragment.error = getString(R.string.erreur_taille_requise)
                     return@setOnClickListener
                 }
                 if (poids <= 0) {
-                    etPoids_fragment.error = "القيم غير صالحة"
+                    etPoids_fragment.error = getString(R.string.erreur_taille_requise)
                     return@setOnClickListener
                 }
 
@@ -69,17 +70,17 @@ class FragmentIndiceDeMasseCorporelle : Fragment() {
 
                 //
                 when {
-                    bmi < 18.5 -> tvPointNormal_fragment.text = "نقص الوزن"
+                    bmi < 18.5 -> tvPointNormal_fragment.text = getString(R.string.underweight)
 
-                    bmi in 18.5..24.9 -> tvPointNormal_fragment.text = "وزن طبيعي"
+                    bmi in 18.5..24.9 -> tvPointNormal_fragment.text = getString(R.string.normal_weight)
 
-                    bmi in 25.0..29.9 -> tvPointNormal_fragment.text = "زيادة الوزن"
-                    else -> tvPointNormal_fragment.text = "سمنة"
+                    bmi in 25.0..29.9 -> tvPointNormal_fragment.text = getString(R.string.overweight)
+                    else -> tvPointNormal_fragment.text = getString(R.string.obesity)
                 }
 
 
             } catch (e: NumberFormatException) {
-                Toast.makeText(requireContext(), "إدخال غير صالح", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(requireContext(), "إدخال غير صالح", Toast.LENGTH_SHORT).show()
             }
 
         }

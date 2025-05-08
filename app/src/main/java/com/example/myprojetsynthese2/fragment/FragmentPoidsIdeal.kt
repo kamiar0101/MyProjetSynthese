@@ -10,6 +10,7 @@ import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
+import android.widget.Toast
 import com.example.myprojetsynthese2.R
 
 class FragmentPoidsIdeal : Fragment() {
@@ -54,7 +55,8 @@ class FragmentPoidsIdeal : Fragment() {
         fun calculerPoidsIdeal() {
             val heightStr = heightEditText.text.toString()
             if (heightStr.isEmpty()) {
-                heightEditText.error = "يرجى إدخال الطول"
+                heightEditText.error = getString(R.string.erreur_taille_requise)
+                Toast.makeText(requireContext(), getString(R.string.erreur_taille_requise), Toast.LENGTH_SHORT).show()
                 return
             }
 

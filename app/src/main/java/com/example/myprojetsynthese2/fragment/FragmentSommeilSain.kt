@@ -1,83 +1,3 @@
-/*
-package com.example.myprojetsynthese2.fragment
-
-import android.annotation.SuppressLint
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.*
-import androidx.fragment.app.Fragment
-import com.example.myprojetsynthese2.R
-import java.util.*
-
-class FragmentSommeilSain : Fragment() {
-
-    //private lateinit var etAgeSommeil: EditText
-    //private lateinit var tpSommeil: TimePicker
-    //private lateinit var btnCalculate: Button
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_sommeil_sain, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        // Initialisation correcte
-        val etAgeSommeil: EditText by lazy { view.findViewById(R.id.etAgeSommeil_fragment) }
-        val tpSommeil: TimePicker by lazy { view.findViewById(R.id.tPSommeil_fragment) }
-        val btnCalculate: Button by lazy { view.findViewById(R.id.btnCalculateSommeil_fragment) }
-        val tvDureeSommeilRecommende_Fragment: TextView by lazy { view.findViewById(R.id.tvDureeSommeilRecommende_Fragment) }
-        val tvHeureCoucherConsecutive_Fragment: TextView by lazy { view.findViewById(R.id.tvHeureCoucherConsecutive_Fragment) }
-
-        tpSommeil.setIs24HourView(true) // Important si tu veux l'affichage 24h
-
-
-        @SuppressLint("DefaultLocale")
-        fun calculateSleepTime() {
-            val ageStr = etAgeSommeil.text.toString()
-            if (ageStr.isEmpty()) {
-                Toast.makeText(requireContext(), "الرجاء إدخال العمر", Toast.LENGTH_SHORT).show()
-                return
-            }
-
-            val age = ageStr.toInt()
-            val wakeHour = tpSommeil.hour
-            val wakeMinute = tpSommeil.minute
-
-            val sleepHours = when {
-                age < 5 -> 11
-                age < 13 -> 10
-                age < 18 -> 9
-                age < 65 -> 8
-                else -> 7
-            }
-
-            val calendar = Calendar.getInstance()
-            calendar.set(Calendar.HOUR_OF_DAY, wakeHour)
-            calendar.set(Calendar.MINUTE, wakeMinute)
-            calendar.add(Calendar.HOUR_OF_DAY, -sleepHours)
-
-            val sleepTime = String.format("%02d:%02d", calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE))
-
-            Toast.makeText(requireContext(), "🛌 يجب أن تنام حوالي الساعة $sleepTime", Toast.LENGTH_LONG).show()
-
-            tvDureeSommeilRecommende_Fragment.text = sleepHours.toString()
-            tvHeureCoucherConsecutive_Fragment.text = sleepTime.toString()
-        }
-
-        btnCalculate.setOnClickListener {
-            calculateSleepTime()
-        }
-    }
-
-}
-*/
-
 package com.example.myprojetsynthese2.fragment
 
 import android.annotation.SuppressLint
@@ -93,12 +13,12 @@ import java.util.*
 
 class FragmentSommeilSain : Fragment() {
 
-    private lateinit var etAgeSommeil: EditText
-    private lateinit var tpSommeil: TimePicker
-    private lateinit var btnCalculate: Button
-    private lateinit var tvDureeSommeilRecommende: TextView
-    private lateinit var tvHeureCoucherConsecutive: TextView
-    private lateinit var btnCycles: List<TextView>
+    private lateinit var champAge: EditText
+    private lateinit var timePickerReveil: TimePicker
+    private lateinit var boutonCalculer: Button
+    private lateinit var texteDureeSommeil: TextView
+    private lateinit var texteHeureCoucher: TextView
+    private lateinit var cyclesTextes: List<TextView>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -109,20 +29,15 @@ class FragmentSommeilSain : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        etAgeSommeil = view.findViewById(R.id.etAgeSommeil_fragment)
-        tpSommeil = view.findViewById(R.id.tPSommeil_fragment)
-        btnCalculate = view.findViewById(R.id.btnCalculateSommeil_fragment)
-        tvDureeSommeilRecommende = view.findViewById(R.id.tvDureeSommeilRecommende_Fragment)
-        tvHeureCoucherConsecutive = view.findViewById(R.id.tvHeureCoucherConsecutive_Fragment)
+        champAge = view.findViewById(R.id.etAgeSommeil_fragment)
+        timePickerReveil = view.findViewById(R.id.tPSommeil_fragment)
+        boutonCalculer = view.findViewById(R.id.btnCalculateSommeil_fragment)
+        texteDureeSommeil = view.findViewById(R.id.tvDureeSommeilRecommende_Fragment)
+        texteHeureCoucher = view.findViewById(R.id.tvHeureCoucherConsecutive_Fragment)
 
-        tpSommeil.setIs24HourView(true)
+        timePickerReveil.setIs24HourView(true)
 
-      //  Utilisateur utilisateur= new  Utilisateur();
-       // utilisateur.setAge(etAgeSommeil)
-
-        // saveUtilisateur(utilisateur)
-
-        btnCycles = listOf(
+        cyclesTextes = listOf(
             view.findViewById(R.id.tvCoucher1_fragment),
             view.findViewById(R.id.tvCoucher2_fragment),
             view.findViewById(R.id.tvCoucher3_fragment),
@@ -131,18 +46,21 @@ class FragmentSommeilSain : Fragment() {
             view.findViewById(R.id.tvCoucher6_fragment)
         )
 
-        btnCalculate.setOnClickListener {
-            val ageStr = etAgeSommeil.text.toString()
+        boutonCalculer.setOnClickListener {
+            val ageStr = champAge.text.toString()
             val age = ageStr.toIntOrNull()
-            if (age == null) {
-                Toast.makeText(requireContext(), "الرجاء إدخال عمر صحيح", Toast.LENGTH_SHORT).show()
+
+            // Vérifier si l'age est valide
+            if (age == null ) {
+                champAge.error = getString(R.string.entrez_age_valide)
+                Toast.makeText(requireContext(), getString(R.string.entrez_age_valide), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            val wakeHour = tpSommeil.hour
-            val wakeMinute = tpSommeil.minute
+            val heureReveil = timePickerReveil.hour
+            val minuteReveil = timePickerReveil.minute
 
-            val sleepHours = when {
+            val heuresSommeil = when {
                 age < 5 -> 11
                 age < 13 -> 10
                 age < 18 -> 9
@@ -150,36 +68,46 @@ class FragmentSommeilSain : Fragment() {
                 else -> 7
             }
 
-            val calendar = Calendar.getInstance()
-            calendar.set(Calendar.HOUR_OF_DAY, wakeHour)
-            calendar.set(Calendar.MINUTE, wakeMinute)
-            calendar.add(Calendar.HOUR_OF_DAY, -sleepHours)
+            val calendrier = Calendar.getInstance()
+            calendrier.set(Calendar.HOUR_OF_DAY, heureReveil)
+            calendrier.set(Calendar.MINUTE, minuteReveil)
+            calendrier.add(Calendar.HOUR_OF_DAY, -heuresSommeil)
 
-            val sleepTime = String.format("%02d:%02d", calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE))
+            val heureCoucher = String.format("%02d:%02d", calendrier.get(Calendar.HOUR_OF_DAY), calendrier.get(Calendar.MINUTE))
 
-            tvDureeSommeilRecommende.text = "$sleepHours ساعات"
-            tvHeureCoucherConsecutive.text = sleepTime
+            texteDureeSommeil.text = getString(R.string.duree_sommeil_heures, heuresSommeil)
 
-            Toast.makeText(requireContext(), "🛌 يجب أن تنام حوالي الساعة $sleepTime", Toast.LENGTH_LONG).show()
+            texteHeureCoucher.text = heureCoucher
 
-            calculerCyclesSommeil(wakeHour, wakeMinute)
+            //Toast.makeText(requireContext(), getString(R.string.toast_heure_coucher, heureCoucher), Toast.LENGTH_LONG).show()
+
+            calculerCyclesSommeil(heureReveil, minuteReveil)
         }
     }
 
-    private fun calculerCyclesSommeil(wakeHour: Int, wakeMinute: Int) {
+    @SuppressLint("SetTextI18n")
+    private fun calculerCyclesSommeil(heureReveil: Int, minuteReveil: Int) {
         val format = SimpleDateFormat("HH:mm", Locale.getDefault())
 
-        for (i in btnCycles.indices) {
-            val cycleCount = 6 - i
-            val calendar = Calendar.getInstance()
-            calendar.set(Calendar.HOUR_OF_DAY, wakeHour)
-            calendar.set(Calendar.MINUTE, wakeMinute)
-            calendar.add(Calendar.MINUTE, -(cycleCount * 90)) // 90 minutes par cycle
+        // Commence avec l'heure de réveil
+        val calendrierBase = Calendar.getInstance()
+        calendrierBase.set(Calendar.HOUR_OF_DAY, heureReveil)
+        calendrierBase.set(Calendar.MINUTE, minuteReveil)
 
-            val timeStr = format.format(calendar.time)
-            btnCycles[i].text = "$cycleCount دورات\n$timeStr"
+        // Affiche 6 cycles de 90 minutes
+        for (i in 0 until 6) {
+            // On clone le calendrier de base pour ne pas le modifier à chaque tour
+            val calendrierCycle = calendrierBase.clone() as Calendar
+
+            // On calcule combien de minutes on doit soustraire (1 cycle = 90 min)
+            val minutesASoustraire = (6 - i) * 90
+            calendrierCycle.add(Calendar.MINUTE, -minutesASoustraire)
+
+            // Format de l'heure
+            val heureFormattee = format.format(calendrierCycle.time)
+
+            // Mise à jour du texte
+            cyclesTextes[i].text = getString(R.string.cycle_sommeil_format, 6 - i, heureFormattee)
         }
     }
 }
-
-
